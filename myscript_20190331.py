@@ -1,3 +1,7 @@
+
+
+
+# ターミナルでのPythonの環境構築及び起動
 Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 16:52:21) 
 [Clang 6.0 (clang-600.0.57)] on darwin
 Type "help", "copyright", "credits" or "license()" for more information.
@@ -69,7 +73,10 @@ Python 3.7.3
 (env) hiraimasayanoMacBook-Pro:~ hiraishoya$ ipython
 Python 3.7.3 (v3.7.3:ef4ec6ed12, Mar 25 2019, 16:52:21) 
 Type 'copyright', 'credits' or 'license' for more information
+# Ipythonの起動
 IPython 7.4.0 -- An enhanced Interactive Python. Type '?' for help.
+
+# Pythonにおけるfor文の処理
 
 In [1]: for year in [1950,2000.2020]: 
    ...:     if year < 1989: 
@@ -170,6 +177,7 @@ In [9]: for year in [1959,2000,2020]:
 平成
 新元号
 
+# 例外処理
 In [10]: try: 
     ...:     1/0 
     ...: except ZeroDivisionError: 
@@ -210,6 +218,7 @@ In [12]: try:
     ...:                                                                        
 0で割れません
 
+# 内包表記を使用せずに文字列の長さのリストを生成
 In [13]: names = ['spam','ham','eggs']                                          
 
 In [14]: lens = []                                                              
@@ -221,6 +230,7 @@ In [15]: for name in names:
 In [16]: lens                                                                   
 Out[16]: [4, 3, 4]
 
+# 同じ処理のリスト内表記
 In [17]: [len(name) for name in names]                                          
 Out[17]: [4, 3, 4]
 
@@ -231,9 +241,11 @@ In [19]: lens = []
 In [20]: [len(name) for name in names]                                          
 Out[20]: [4, 3, 4]
 
+# セット内包表記
 In [21]: {len(name) for name in names}                                                                                                                                                                                                      
 Out[21]: {3, 4}
 
+# 辞書内包表記
 In [22]: {name:len(name) for in names}                                                                                                                                                                                                      
   File "<ipython-input-22-517d42de75f9>", line 1
     {name:len(name) for in names}
@@ -264,6 +276,9 @@ Out[26]:
  [(1, 0), (1, 4), (1, 16), (1, 36), (1, 64)],
  [(2, 0), (2, 4), (2, 16), (2, 36), (2, 64)]]
 
+# ジェネレーター式 大量のデータ処理に大量のメモリを確保せずに負荷を軽減できる
+# プログラミングとメモリの関係についてもまた深く学ぶ必要あり
+
 In [27]: l = [x*x for x in range(10000)]                                                                                                                                                                                                    
 
 In [28]: type(l),len(l)                                                                                                                                                                                                                     
@@ -277,6 +292,8 @@ Out[30]: generator
 In [31]: next(g),next(g),next(g)                                                                                                                                                                                                            
 Out[31]: (0, 1, 4)
 
+# ファイル入出力 
+# with構文とopen関数を使う
 In [32]: with open('sample.txt','w',encoding='utf-8') as f: 
     ...:     f.write('こんにちは')  
     ...:     f.write('Python\n') 
@@ -292,6 +309,7 @@ In [34]: with open('sample.txt',encoding='utf-8') as f:
 In [35]: data                                                                                                                                                                                                                               
 Out[35]: 'こんにちはPython\n'
 
+# 文字列操作　
 In [36]: s1 = 'hello Python'                                                                                                                                                                                                                
 
 In [37]: s1.upper().s1.lower(),s1.title()                                                                                                                                                                                                   
@@ -302,7 +320,8 @@ AttributeError                            Traceback (most recent call last)
 
 AttributeError: 'str' object has no attribute 's1'
 
-In [38]: s1.upper(),s1.lower(),s1.title()                                                                                                                                                                                                   
+In [38]: s1.upper(),s1.lower(),s1.title()     
+# upperで全てを大文字、lowerで全てを小文字、titleで単語ごとに区切られた頭文字の大文字化                                                                                                                                                                                           
 Out[38]: ('HELLO PYTHON', 'hello python', 'Hello Python')
 
 In [39]: s1.replace('hello,Hi')                                                                                                                                                                                                             
@@ -317,7 +336,7 @@ In [40]: s1.replace('hello', 'Hi')
 Out[40]: 'Hi Python'
 
 In [41]: s2 = ' spam ham eggs'                                                                                                                                                                                                              
-
+# splitで分割
 In [42]: s2.split()                                                                                                                                                                                                                         
 Out[42]: ['spam', 'ham', 'eggs']
 
